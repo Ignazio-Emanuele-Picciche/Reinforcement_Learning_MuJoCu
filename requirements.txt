@@ -25,6 +25,8 @@ gast==0.6.0
 glfw==2.8.0
 google-pasta==0.2.0
 grpcio==1.70.0
+gym==0.26.2
+gym-notices==0.0.8
 gymnasium==1.0.0
 h5py==3.12.1
 idna==3.10
@@ -68,6 +70,7 @@ protobuf==5.29.3
 psutil==6.1.1
 ptyprocess==0.7.0
 pure_eval==0.2.3
+pybullet==3.2.7
 pygame==2.6.1
 Pygments==2.19.1
 PyOpenGL==3.1.9
