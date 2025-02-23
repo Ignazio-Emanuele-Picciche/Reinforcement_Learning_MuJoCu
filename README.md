@@ -1,9 +1,13 @@
 # Reinforcement_Learning_MuJoCu
 
+![Anteprima](videos/halfcheetah.gif)
+
+
 ## Indice 
 1. [Descrizione del progetto](#descrizione-del-progetto)
 2. [Setup del Enviroment](#setup-del-enviroment)
 3. [Pipeline](#pipeline)
+4. [Grafici e Risultati](#grafici-e-risultati)
 
 ## Descrizione del progetto
 Questo progetto esplora l'applicazione di algoritmi avanzati di Reinforcement Learning (RL) per l'addestramento e la valutazione di agenti autonomi nei classici ambienti HalfCheetah e Ant della libreria Gymnasium. L'obiettivo principale è ottimizzare le prestazioni degli agenti utilizzando due approcci principali per HalfCheetah: Proximal Policy Optimization (PPO) e Soft Actor-Critic (SAC). Per l'ambiente Ant, viene impiegato anche Twin Delayed Deep Deterministic Policy Gradient (TD3).
