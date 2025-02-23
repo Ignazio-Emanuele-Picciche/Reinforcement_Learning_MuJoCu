@@ -1,7 +1,8 @@
 # Reinforcement_Learning_MuJoCu
 
-![Anteprima](videos/halfcheetah.gif)
-
+<p align="center">
+  <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/halfcheetah.gif" alt="HalfCheetah GIF">
+</p>
 
 ## Indice 
 1. [Descrizione del progetto](#descrizione-del-progetto)
