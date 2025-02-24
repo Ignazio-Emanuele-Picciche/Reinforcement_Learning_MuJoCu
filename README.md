@@ -144,3 +144,8 @@ Durante l’addestramento, viene registrata la reward media ottenuta dal modello
 Questi strumenti aiutano a valutare la qualità dell’addestramento e a confrontare i diversi algoritmi usati.
 
 Esempio grafici presi dal PPO Half_Cheetah:
+
+<p align="center">
+    <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Reward.png" width="45%">
+    <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Valutazione_policy.png" width="45%">
+</p>
