@@ -10,6 +10,7 @@
 3. [Struttura del repository](#struttura-del-repository)
 4. [Organizzazione Progetto](#organizzazione-progetto)
 4. [Grafici e Risultati](#grafici-e-risultati)
+5. [Problemi affrontati e soluzioni adottate](#problemi-affrontati-e-soluzioni-adottate)
 
 ## Descrizione del progetto
 Questo progetto esplora l'applicazione di algoritmi avanzati di Reinforcement Learning (RL) per l'addestramento e la valutazione di agenti autonomi nei classici ambienti HalfCheetah e Ant della libreria Gymnasium. L'obiettivo principale è ottimizzare le prestazioni degli agenti utilizzando due approcci principali per HalfCheetah: Proximal Policy Optimization (PPO) e Soft Actor-Critic (SAC). Per l'ambiente Ant, viene impiegato anche Twin Delayed Deep Deterministic Policy Gradient (TD3).
@@ -149,3 +150,10 @@ Esempio grafici presi dal PPO Half_Cheetah:
     <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Reward.png" width="45%">
     <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Valutazione_policy.png" width="45%">
 </p>
+
+## Problemi affrontati e soluzioni adottate
+All'inizio dello sviluppo, abbiamo utilizzato un ambiente di base predefinito per le librerie, ma abbiamo riscontrato che non era adeguato né per il modello Cheetah né per Ant. In particolare, per Cheetah, l'algoritmo tendeva spesso a convergere verso soluzioni subottimali anziché trovare l'ottimo globale. Per migliorare le prestazioni, abbiamo introdotto una penalizzazione aggiuntiva qualora il dorso del Cheetah superasse un determinato angolo, incrementando progressivamente il valore della penalità per scoraggiare tali comportamenti indesiderati.
+
+Un ulteriore miglioramento è stato ottenuto modificando l'architettura della rete neurale attraverso il parametro "policy_kwargs": dict(net_arch=[256, 256, 128]), che ha portato a risultati più soddisfacenti nel caso di Cheetah.
+
+Per quanto riguarda Ant, abbiamo esplorato diverse strategie per migliorare le prestazioni, adattando e testando vari algoritmi con l'obiettivo di ottimizzare il controllo del modello. In particolare, abbiamo affinato l'architettura della rete neurale e regolato i parametri chiave per gestire la maggiore complessità computazionale dell'ambiente. Nonostante le difficoltà intrinseche del task, siamo riusciti a individuare e implementare le soluzioni migliori tra quelle testate, consentendo così di avanzare significativamente nell'addestramento e di ottenere risultati concreti, sebbene rimanga margine di miglioramento per arrivare a una soluzione ottimale definitiva.
