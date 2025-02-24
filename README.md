@@ -7,7 +7,8 @@
 ## Indice 
 1. [Descrizione del progetto](#descrizione-del-progetto)
 2. [Setup del Enviroment](#setup-del-enviroment)
-3. [Pipeline](#pipeline)
+3. [Struttura del repository](#struttura-del-repository)
+4. [Organizzazione Progetto](#organizzazione-progetto)
 4. [Grafici e Risultati](#grafici-e-risultati)
 
 ## Descrizione del progetto
@@ -44,6 +45,102 @@ Prima di eseguire il codice, assicurati di utilizzare la versione di Python 3.10
 
 Una volta configurato l'ambiente virtuale e installate le dipendenze, sei pronto per eseguire l'applicazione. Semplicemente, naviga fino al file .ipynb desiderato ed eseguilo.
 
-## Pipeline
+## Struttura del repository
+Il progetto è organizzato nelle seguenti directory e file:
+```plaintext
+REINFORCEMENT_LEARNING_MUJOCU/
+├── Docs/                           # Documentazione e risultati  
+│   ├── Best Rewards.xlsx           # Foglio Excel con i miglior risultati ottenuti  
+│   ├── Spiegazione metriche RL.docx # Documento con spiegazione delle metriche usate  
+│
+├── Test Ant/                        # Esperimenti con l'ambiente Ant  
+│   ├── PPO/                          # Esperimenti con PPO  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── ppo_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_PPO.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_PPO.ipynb     # Notebook per il tuning dei parametri  
+│   │   ├── Render_ANT_PPO.ipynb      # Notebook per il rendering del modello addestrato  
+│   │   ├── ppo_Ant_model_PPO16.zip   # Modello salvato  
+│   │   ├── ppo_Ant_model_PPO17_senza_hp.zip  # Modello senza hyperparameter tuning  
+│   │   ├── ppo_Ant_model_PPO18.zip   # Ultima versione del modello  
+│   │   ├── vecnormalize_Ant.pkl      # File per la normalizzazione degli input  
+│   │  
+│   ├── SAC/                          # Esperimenti con SAC  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── sac_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_SAC.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_SAC.ipynb     # Notebook per il tuning dei parametri    
+│   │   ├── Render_ANT_SAC.ipynb      # Notebook per il rendering  
+│   │   ├── sac_Ant_model.zip         # Modello salvato  
+│   │   ├── vecnormalize_Ant.pkl      # File per la normalizzazione degli input  
+│   │  
+│   ├── TD3/                          # Esperimenti con TD3  
+│   │   ├── td3_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_TD3.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_TD3.ipynb     # Notebook per il tuning dei parametri   
+│   │   ├── Render_ANT_TD3.ipynb      # Notebook per il rendering  
+│
+├── Test Cheetah/                     # Esperimenti con l'ambiente HalfCheetah  
+│   ├── PPO_CustomENV/                # Esperimenti con PPO  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── ppo_HalfCheetah_tensorboard/ # File di TensorBoard  
+│   │   ├── HT_HalfCheetah_ppo.ipynb  # Notebook per il tuning dei parametri   
+│   │   ├── ppo_cheetah.ipynb         # Notebook di addestramento  
+│   │   ├── Render_HalfCheetah_ppo.ipynb # Notebook per il rendering  
+│   │   ├── ppo_HalfCheetah_model.zip # Modello salvato  
+│   │   ├── vecnormalize_HalfCheetah.pkl # File per la normalizzazione  
+│   │  
+│   ├── SAC_CustomENV/                # Esperimenti con SAC  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── sac_HalfCheetah_tensorboard/ # File di TensorBoard  
+│   │   ├── HT_HalfCheetah_sac.ipynb  # Notebook per il tuning dei parametri   
+│   │   ├── sac_cheetah.ipynb         # Notebook di addestramento  
+│   │   ├── Render_HalfCheetah_sac.ipynb # Notebook per il rendering  
+│   │   ├── sac_HalfCheetah_model.zip # Modello salvato  
+│   │   ├── vecnormalize_HalfCheetah.pkl # File per la normalizzazione  
+│
+├── videos/                           # Cartella con video delle migliori policy  
+│   ├── halfcheetah_best_policy.mp4   # Video della migliore policy  
+│   ├── halfcheetah.gif               # GIF della simulazione  
+│
+├── venv/                             # Ambiente virtuale Python  
+│
+├── .gitignore                        # File per ignorare file non necessari su Git  
+├── prova.ipynb                        # Notebook per il tuning dei parametri  
+├── README.md                          # Questo file  
+├── requirements.txt                   # File con le dipendenze del progetto  
+```
+
+## Organizzazione Progetto 
+
+Il progetto è strutturato in cartelle dedicate ai test su due ambienti di simulazione: Ant e HalfCheetah. All'interno di ciascuna di queste cartelle, i test sono ulteriormente suddivisi in base all'algoritmo di reinforcement learning utilizzato per l'addestramento del modello, tra cui PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic) e TD3 (Twin Delayed Deep Deterministic Policy Gradient).
+
+Ogni cartella dedicata a un algoritmo contiene i seguenti notebook Jupyter:
+
+1. Hyperparameter Tuning: un notebook specifico per la regolazione degli iperparametri, utile per ottimizzare le prestazioni del modello prima della fase di addestramento effettivo.
+
+2. Training: il notebook principale per l'addestramento del modello nell'ambiente corrispondente, che nel caso di HalfCheetah include anche la visualizzazione di grafici riassuntivi delle metriche di addestramento.
+
+3. Rendering: un notebook dedicato alla visualizzazione e alla valutazione del comportamento del modello dopo l'addestramento.
+
+Nel caso specifico del notebook di rendering del modello PPO per l'ambiente HalfCheetah, sono disponibili due modalità di rendering:
+
+1. Human Mode: questa modalità consente di visualizzare in tempo reale l'interazione dell'agente con l'ambiente, rendendolo adatto per l'osservazione diretta da parte dell'utente.
+2. RGB Array Mode: questa modalità restituisce i frame del rendering sotto forma di array di valori RGB, permettendo di elaborare e salvare il video per analisi successive o per la creazione di animazioni.
+Questa organizzazione consente una gestione chiara e modulare degli esperimenti, facilitando l'analisi delle performance dei diversi algoritmi applicati agli ambienti di simulazione.
 
 ## Grafici e Risultati
+Per capire quanto bene ha imparato il modello, il progetto include un confronto tra la policy addestrata e una policy casuale, oltre a un grafico che mostra l’andamento della reward media durante l’addestramento.
+
+1. Confronto tra policy addestrata e casuale
+Dopo l’addestramento, il modello viene testato e confrontato con un agente che si muove in modo casuale (random policy). Questo serve a vedere quanto l’algoritmo ha migliorato il comportamento rispetto a un’azione priva di apprendimento. Idealmente, la policy addestrata dovrebbe mostrare movimenti più fluidi ed efficienti rispetto alla policy casuale.
+
+2. Grafico della reward media nel tempo
+Durante l’addestramento, viene registrata la reward media ottenuta dal modello a intervalli di tempo. Questo grafico aiuta a capire come sta migliorando il modello nel tempo:
+
+    -Se la reward sale, significa che il modello sta imparando a muoversi meglio.
+    -Se la reward si stabilizza o scende, potrebbe indicare un problema o che il modello ha raggiunto il suo massimo livello di apprendimento.
+
+Questi strumenti aiutano a valutare la qualità dell’addestramento e a confrontare i diversi algoritmi usati.
+
+Esempio grafici presi dal PPO Half_Cheetah:
