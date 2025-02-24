@@ -48,58 +48,112 @@ Once the virtual environment is set up and dependencies are installed, you are r
 The project is organized into the following directories and files:
 ```plaintext
 REINFORCEMENT_LEARNING_MUJOCU/
-├── Docs/                           # Documentation and results  
-│   ├── Best Rewards.xlsx           # Excel file with the best results obtained  
-│   ├── Explanation of RL Metrics.docx # Document explaining the metrics used  
+├── Docs/                           # Documentazione e risultati  
+│   ├── Best Rewards.xlsx           # Foglio Excel con i miglior risultati ottenuti  
+│   ├── Spiegazione metriche RL.docx # Documento con spiegazione delle metriche usate  
 │
-├── Test Ant/                        # Experiments with the Ant environment  
-│   ├── PPO/                          # Experiments with PPO  
-│   │   ├── logs/                     # Training logs  
-│   │   ├── ppo_Ant_tensorboard/      # TensorBoard files  
-│   │   ├── ANT_train_PPO.ipynb       # Training notebook  
-│   │   ├── HT_Ant_test_PPO.ipynb     # Hyperparameter tuning notebook  
-│   │   ├── Render_ANT_PPO.ipynb      # Rendering notebook  
-│   │   ├── ppo_Ant_model_PPO16.zip   # Saved model  
-│   │   ├── ppo_Ant_model_PPO17_no_hp.zip  # Model without hyperparameter tuning  
-│   │   ├── ppo_Ant_model_PPO18.zip   # Latest model version  
-│   │   ├── vecnormalize_Ant.pkl      # Input normalization file  
+├── Test Ant/                        # Esperimenti con l'ambiente Ant  
+│   ├── PPO/                          # Esperimenti con PPO  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── ppo_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_PPO.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_PPO.ipynb     # Notebook per il tuning dei parametri  
+│   │   ├── Render_ANT_PPO.ipynb      # Notebook per il rendering del modello addestrato  
+│   │   ├── ppo_Ant_model_PPO16.zip   # Modello salvato  
+│   │   ├── ppo_Ant_model_PPO17_senza_hp.zip  # Modello senza hyperparameter tuning  
+│   │   ├── ppo_Ant_model_PPO18.zip   # Ultima versione del modello  
+│   │   ├── vecnormalize_Ant.pkl      # File per la normalizzazione degli input  
 │   │  
-│   ├── SAC/                          # Experiments with SAC  
-│   │   ├── logs/                     # Training logs  
-│   │   ├── sac_Ant_tensorboard/      # TensorBoard files  
-│   │   ├── ANT_train_SAC.ipynb       # Training notebook  
-│   │   ├── HT_Ant_test_SAC.ipynb     # Hyperparameter tuning notebook    
-│   │   ├── Render_ANT_SAC.ipynb      # Rendering notebook  
-│   │   ├── sac_Ant_model.zip         # Saved model  
-│   │   ├── vecnormalize_Ant.pkl      # Input normalization file  
+│   ├── SAC/                          # Esperimenti con SAC  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── sac_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_SAC.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_SAC.ipynb     # Notebook per il tuning dei parametri    
+│   │   ├── Render_ANT_SAC.ipynb      # Notebook per il rendering  
+│   │   ├── sac_Ant_model.zip         # Modello salvato  
+│   │   ├── vecnormalize_Ant.pkl      # File per la normalizzazione degli input  
+│   │  
+│   ├── TD3/                          # Esperimenti con TD3  
+│   │   ├── td3_Ant_tensorboard/      # File di TensorBoard  
+│   │   ├── ANT_train_TD3.ipynb       # Notebook per l'addestramento  
+│   │   ├── HT_Ant_test_TD3.ipynb     # Notebook per il tuning dei parametri   
+│   │   ├── Render_ANT_TD3.ipynb      # Notebook per il rendering  
 │
-... (rest of the repository structure remains unchanged)
+├── Test Cheetah/                     # Esperimenti con l'ambiente HalfCheetah  
+│   ├── PPO_CustomENV/                # Esperimenti con PPO  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── ppo_HalfCheetah_tensorboard/ # File di TensorBoard  
+│   │   ├── HT_HalfCheetah_ppo.ipynb  # Notebook per il tuning dei parametri   
+│   │   ├── ppo_cheetah.ipynb         # Notebook di addestramento  
+│   │   ├── Render_HalfCheetah_ppo.ipynb # Notebook per il rendering  
+│   │   ├── ppo_HalfCheetah_model.zip # Modello salvato  
+│   │   ├── vecnormalize_HalfCheetah.pkl # File per la normalizzazione  
+│   │  
+│   ├── SAC_CustomENV/                # Esperimenti con SAC  
+│   │   ├── logs/                     # Log di addestramento  
+│   │   ├── sac_HalfCheetah_tensorboard/ # File di TensorBoard  
+│   │   ├── HT_HalfCheetah_sac.ipynb  # Notebook per il tuning dei parametri   
+│   │   ├── sac_cheetah.ipynb         # Notebook di addestramento  
+│   │   ├── Render_HalfCheetah_sac.ipynb # Notebook per il rendering  
+│   │   ├── sac_HalfCheetah_model.zip # Modello salvato  
+│   │   ├── vecnormalize_HalfCheetah.pkl # File per la normalizzazione  
+│
+├── videos/                           # Cartella con video delle migliori policy  
+│   ├── halfcheetah_best_policy.mp4   # Video della migliore policy  
+│   ├── halfcheetah.gif               # GIF della simulazione  
+│
+├── venv/                             # Ambiente virtuale Python  
+│
+├── .gitignore                        # File per ignorare file non necessari su Git  
+├── prova.ipynb                        # Notebook per il tuning dei parametri  
+├── README.md                          # Questo file  
+├── requirements.txt                   # File con le dipendenze del progetto  
 ```
 
 ## Project Organization
+To assess how well the model has learned, the project includes a comparison between the trained policy and a random policy, along with a graph that shows the trend of the average reward during training.
+
+1. Comparison Between Trained and Random Policy
+After training, the model is tested and compared with an agent that moves randomly (random policy). This helps evaluate how much the algorithm has improved behavior compared to an action without learning. Ideally, the trained policy should exhibit smoother and more efficient movements compared to the random policy.
+
+2. Average Reward Graph Over Time
+During training, the average reward obtained by the model is recorded at time intervals. This graph helps understand how the model is improving over time:
+
+    - If the reward increases, it means the model is learning to move better.
+    - If the reward stabilizes or decreases, it could indicate a problem or that the model has reached its maximum learning potential.
+
+These tools help evaluate the quality of training and compare the different algorithms used.
+
 The project is structured into folders dedicated to testing two simulation environments: Ant and HalfCheetah. Within each of these folders, tests are further divided based on the reinforcement learning algorithm used for model training, including PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic), and TD3 (Twin Delayed Deep Deterministic Policy Gradient).
 
 Each algorithm-specific folder contains the following Jupyter notebooks:
 
 1. Hyperparameter Tuning: A dedicated notebook for tuning hyperparameters, essential for optimizing model performance before actual training.
-2. Training: The main notebook for training the model in the respective environment, including summary graphs of training metrics for HalfCheetah.
-3. Rendering: A notebook for visualizing and evaluating model behavior after training.
+
+2. Training: The main notebook for training the model in the respective environment, which in the case of HalfCheetah also includes the visualization of summary graphs of training metrics.
+
+3. Rendering: A notebook for visualizing and evaluating the model's behavior after training.
 
 In the specific case of the PPO rendering notebook for the HalfCheetah environment, two rendering modes are available:
 
-1. Human Mode: Displays real-time agent interaction with the environment, suitable for direct observation.
-2. RGB Array Mode: Outputs rendering frames as RGB value arrays, allowing further processing and video creation for later analysis.
+1. Human Mode: This mode allows real-time visualization of the agent's interaction with the environment, making it suitable for direct user observation.
+2. RGB Array Mode: This mode returns rendering frames as arrays of RGB values, enabling further processing and video saving for later analysis or animation creation.
+
+This organization enables a clear and modular management of experiments, facilitating the analysis of the performance of different algorithms applied to simulation environments.
 
 ## Graphs and Results
-To assess model performance, the project includes a comparison between the trained policy and a random policy, along with a graph showing the average reward progression during training.
+To assess how well the model has learned, the project includes a comparison between the trained policy and a random policy, along with a graph that shows the trend of the average reward during training.
 
-1. Trained Policy vs. Random Policy
-After training, the model is tested and compared with an agent that moves randomly (random policy). This comparison helps evaluate how much the algorithm has improved behavior compared to non-learning-based actions.
+1. Comparison Between Trained and Random Policy
+After training, the model is tested and compared with an agent that moves randomly (random policy). This helps evaluate how much the algorithm has improved behavior compared to an action without learning. Ideally, the trained policy should exhibit smoother and more efficient movements compared to the random policy.
 
-2. Average Reward Over Time
-A graph tracking the model’s average reward during training provides insights into its improvement:
-    - An increasing reward indicates that the model is learning to move better.
-    - A stable or decreasing reward may suggest issues or a learning plateau.
+2. Average Reward Graph Over Time
+During training, the average reward obtained by the model is recorded at time intervals. This graph helps understand how the model is improving over time:
+
+    - If the reward increases, it means the model is learning to move better.
+    - If the reward stabilizes or decreases, it could indicate a problem or that the model has reached its maximum learning potential.
+
+These tools help evaluate the quality of training and compare the different algorithms used.
 
 Example graphs from PPO HalfCheetah:
 
@@ -109,7 +163,9 @@ Example graphs from PPO HalfCheetah:
 </p>
 
 ## Challenges and Adopted Solutions
-Initially, we used a basic predefined environment, which was inadequate for both the Cheetah and Ant models. Specifically, the Cheetah algorithm frequently converged to suboptimal solutions. To counter this, we introduced a penalty for excessive torso tilt, progressively increasing the penalty value to discourage undesirable behavior.
+At the beginning of the development, we used a predefined basic environment for the libraries, but we found that it was not suitable for either the Cheetah or Ant models. Specifically, for Cheetah, the algorithm often tended to converge towards suboptimal solutions rather than finding the global optimum. To improve performance, we introduced an additional penalty whenever the Cheetah's torso exceeded a certain angle, progressively increasing the penalty value to discourage such undesirable behaviors.
 
-For Ant, various strategies were explored, fine-tuning key parameters to handle the environment's complexity. Despite the inherent challenges, we successfully identified and implemented the best solutions, significantly improving training outcomes while acknowledging room for further optimization.
+A further improvement was achieved by modifying the neural network architecture through the parameter "policy_kwargs": dict(net_arch=[256, 256, 128]), which led to more satisfactory results in the case of Cheetah.
+
+Regarding Ant, we explored various strategies to improve performance, adapting and testing different algorithms with the goal of optimizing model control. In particular, we refined the neural network architecture and adjusted key parameters to handle the greater computational complexity of the environment. Despite the intrinsic difficulties of the task, we managed to identify and implement the best solutions among those tested, thus significantly advancing training and achieving concrete results, although there is still room for improvement to reach a definitive optimal solution.
 
