@@ -2,6 +2,7 @@
 
 <p align="center">
     <img src="Test Cheetah/media/halfcheetah.gif" alt="HalfCheetah GIF">
+    <img src="myLib/ANT_media/rendering_ant_ppo15.gif" alt="Ant GIF">
 </p>
 
 <!-- To read the README.md in English, click [here](myLib/README_english.md). -->
@@ -185,7 +186,10 @@ Di seguito sono riportati uno dei migliori risultati ottenuti durante l'addestra
 
 Di seguito ri riporta uno dei migliori risultati ottenuti durante l'addestramento con l'algoritmo PPO per l'ambiente Ant:
 
-#######
+<p align="left">
+    <img src="myLib/ANT_media/best_eval_ANT_PPO.png" width="70%">
+    <img src="myLib/ANT_media/best_train_ANT_PPO.png" width="70%">
+</p>
 
 Questi strumenti di valutazione sono essenziali per comprendere la qualità dell'addestramento e per confrontare le performance dei diversi algoritmi utilizzati nel progetto.
 
