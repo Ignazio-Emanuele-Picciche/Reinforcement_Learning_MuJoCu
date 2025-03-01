@@ -179,16 +179,16 @@ Below are some of the best results obtained during training with the PPO algorit
 - **Policy Evaluation**: Compares the performance of the trained policy with that of a random policy, demonstrating the algorithm's effectiveness.
 
 <p align="center">
-    <img src="Test Cheetah/media/Reward.png" width="45%">
-    <img src="Test Cheetah/media/Valutazione_policy.png" width="45%">
+    <img src="../Test Cheetah/media/Reward.png" width="45%">
+    <img src="../Test Cheetah/media/Valutazione_policy.png" width="45%">
 </p>
 
 
 Below are some of the best results obtained during training with the PPO algorithm for the Ant environment:
 
 <p align="left">
-    <img src="myLib/ANT_media/best_eval_ANT_PPO.png" width="70%">
-    <img src="myLib/ANT_media/best_train_ANT_PPO.png" width="70%">
+    <img src="ANT_media/best_eval_ANT_PPO.png" width="70%">
+    <img src="ANT_media/best_train_ANT_PPO.png" width="70%">
 </p>
 
 These evaluation tools are essential for understanding the quality of training and comparing the performance of the different algorithms used in the project.
