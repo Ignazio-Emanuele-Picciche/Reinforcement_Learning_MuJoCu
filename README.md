@@ -1,11 +1,11 @@
 # Reinforcement_Learning_MuJoCu
 
 <p align="center">
-    <img src="Test Cheetah/media/halfcheetah.gif" alt="HalfCheetah GIF">
-    <img src="myLib/ANT_media/rendering_ant_ppo15.gif" alt="Ant GIF">
+    <img src="Test Cheetah/media/halfcheetah.gif" alt="HalfCheetah GIF" width="40%">
+    <img src="myLib/ANT_media/rendering_ant_ppo15.gif" alt="Ant GIF" width="40%">
 </p>
 
-<!-- To read the README.md in English, click [here](myLib/README_english.md). -->
+To read the README.md in English, click [here](myLib/README_english.md).
 
 ## Indice 
 1. [Descrizione del progetto](#1-descrizione-del-progetto)
