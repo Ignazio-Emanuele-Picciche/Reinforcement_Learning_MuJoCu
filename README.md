@@ -142,6 +142,7 @@ Dopo l’addestramento, il modello viene testato e confrontato con un agente che
 Durante l’addestramento, viene registrata la reward media ottenuta dal modello a intervalli di tempo. Questo grafico aiuta a capire come sta migliorando il modello nel tempo:
 
     -Se la reward sale, significa che il modello sta imparando a muoversi meglio.
+    
     -Se la reward si stabilizza o scende, potrebbe indicare un problema o che il modello ha raggiunto il suo massimo livello di apprendimento.
 
 Questi strumenti aiutano a valutare la qualità dell’addestramento e a confrontare i diversi algoritmi usati.
