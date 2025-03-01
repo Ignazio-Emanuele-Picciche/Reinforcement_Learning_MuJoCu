@@ -11,8 +11,8 @@
 2. [Setup del Enviroment](#2-setup-del-enviroment)
 3. [Struttura del repository](#3-struttura-del-repository)
 4. [Organizzazione Progetto](#4-organizzazione-progetto)
-4. [Grafici e Risultati](#5-grafici-e-risultati)
-5. [Problemi affrontati e soluzioni adottate](#6-problemi-affrontati-e-soluzioni-adottate)
+5. [Grafici e Risultati](#5-grafici-e-risultati)
+6. [Problemi affrontati e soluzioni adottate](#6-problemi-affrontati-e-soluzioni-adottate)
 
 ## 1. Descrizione del progetto
 Questo progetto esplora l'applicazione di algoritmi avanzati di Reinforcement Learning (RL) per l'addestramento e la valutazione di agenti autonomi nei classici ambienti HalfCheetah e Ant della libreria Gymnasium. L'obiettivo principale è ottimizzare le prestazioni degli agenti utilizzando due approcci principali per HalfCheetah: Proximal Policy Optimization (PPO) e Soft Actor-Critic (SAC). Per l'ambiente Ant, viene impiegato anche Twin Delayed Deep Deterministic Policy Gradient (TD3).
@@ -25,13 +25,11 @@ Prima di eseguire il codice, assicurati di utilizzare la versione di Python 3.10
 1. Creare un Ambiente Virtuale:
 
     - Apri il terminale o il prompt dei comandi.
-
-    - Esegui il seguente comando per creare un ambiente virtuale chiamato "venv": python -m venv venv
+    - Esegui il seguente comando per creare un ambiente virtuale chiamato "venv": `python -m venv venv`
 
 2. Attivare l'Ambiente Virtuale:
 
     - Se stai usando Windows: `.\venv\Scripts\activate`
-
     - Se stai usando Unix o macOS: `source venv/bin/activate`
 
 3. OPZIONALE - Disattivare l'Ambiente Virtuale (Quando hai finito):
@@ -41,10 +39,9 @@ Prima di eseguire il codice, assicurati di utilizzare la versione di Python 3.10
 4. Installare le Dipendenze:
 
     - Dopo aver clonato il progetto e attivato l'ambiente virtuale, installa le dipendenze richieste utilizzando: `pip install -r requirements.txt`
-    
     - Questo comando scaricherà tutti i moduli non standard richiesti dall'applicazione.
 
-5. Se la versione di Python utilizzata per creare l'ambiente virtuale non contiene una versione aggiornata di pip, aggiorna pip utilizzando:`pip install --upgrade pip`
+5. Se la versione di Python utilizzata per creare l'ambiente virtuale non contiene una versione aggiornata di pip, aggiorna pip utilizzando: `pip install --upgrade pip`
 
 Una volta configurato l'ambiente virtuale e installate le dipendenze, sei pronto per eseguire l'applicazione. Semplicemente, naviga fino al file .ipynb desiderato ed eseguilo.
 
@@ -146,26 +143,30 @@ Questa organizzazione modulare consente una gestione chiara e strutturata degli 
 Inoltre, la suddivisione in cartelle e notebook specifici rende il progetto facilmente navigabile e comprensibile, anche per chi non ha familiarità con il codice. Ogni notebook è documentato e contiene spiegazioni dettagliate dei passaggi eseguiti, rendendo il progetto accessibile e utile per scopi educativi e di ricerca.
 
 ## 5. Grafici e Risultati
-Per capire quanto bene ha imparato il modello, il progetto include un confronto tra la policy addestrata e una policy casuale, oltre a un grafico che mostra l’andamento della reward media durante l’addestramento.
+Per valutare l'efficacia dell'addestramento del modello, il progetto include un confronto tra la policy addestrata e una policy casuale, oltre a grafici che mostrano l'andamento della reward media durante l'addestramento.
 
-1. Confronto tra policy addestrata e casuale
-Dopo l’addestramento, il modello viene testato e confrontato con un agente che si muove in modo casuale (random policy). Questo serve a vedere quanto l’algoritmo ha migliorato il comportamento rispetto a un’azione priva di apprendimento. Idealmente, la policy addestrata dovrebbe mostrare movimenti più fluidi ed efficienti rispetto alla policy casuale.
+### 1. Confronto tra Policy Addestrata e Casuale
+Dopo l'addestramento, il modello viene testato e confrontato con un agente che si muove in modo casuale (random policy). Questo confronto serve a evidenziare quanto l'algoritmo abbia migliorato il comportamento rispetto a un'azione priva di apprendimento. Idealmente, la policy addestrata dovrebbe mostrare movimenti più fluidi ed efficienti rispetto alla policy casuale, dimostrando l'efficacia dell'algoritmo di reinforcement learning.
 
-2. Grafico della reward media nel tempo
-Durante l’addestramento, viene registrata la reward media ottenuta dal modello a intervalli di tempo. Questo grafico aiuta a capire come sta migliorando il modello nel tempo:
+### 2. Grafico della Reward Media nel Tempo
+Durante l'addestramento, viene registrata la reward media ottenuta dal modello a intervalli di tempo. Questo grafico è fondamentale per monitorare i progressi del modello e identificare eventuali problemi:
 
-    - Se la reward sale, significa che il modello sta imparando a muoversi meglio.
-    
-    - Se la reward si stabilizza o scende, potrebbe indicare un problema o che il modello ha raggiunto il suo massimo livello di apprendimento.
+- **Incremento della Reward**: Se la reward media aumenta nel tempo, significa che il modello sta imparando a muoversi meglio e a ottimizzare le sue azioni.
+- **Stabilizzazione o Decremento della Reward**: Se la reward media si stabilizza o diminuisce, potrebbe indicare che il modello ha raggiunto il suo massimo livello di apprendimento o che ci sono problemi nell'addestramento che necessitano di essere risolti.
 
-Questi strumenti aiutano a valutare la qualità dell’addestramento e a confrontare i diversi algoritmi usati.
+### Esempio di Grafici
+Di seguito sono riportati esempi di grafici ottenuti durante l'addestramento con l'algoritmo PPO per l'ambiente HalfCheetah:
 
-Esempio grafici presi dal PPO Half_Cheetah:
+- **Grafico della Reward Media**: Mostra l'andamento della reward media nel tempo, evidenziando i progressi del modello durante l'addestramento.
+- **Valutazione della Policy**: Confronta la performance della policy addestrata con quella di una policy casuale, dimostrando l'efficacia dell'algoritmo.
 
 <p align="center">
     <img src="Test Cheetah/media/Reward.png" width="45%">
     <img src="Test Cheetah/media/Valutazione_policy.png" width="45%">
 </p>
+
+Questi strumenti di valutazione sono essenziali per comprendere la qualità dell'addestramento e per confrontare le performance dei diversi algoritmi utilizzati nel progetto.
+
 
 ## 6. Problemi affrontati e soluzioni adottate
 All'inizio dello sviluppo, abbiamo utilizzato un ambiente di base predefinito per le librerie, ma abbiamo riscontrato che non era adeguato né per il modello Cheetah né per Ant. In particolare, per Cheetah, l'algoritmo tendeva spesso a convergere verso soluzioni subottimali anziché trovare l'ottimo globale. Per migliorare le prestazioni, abbiamo introdotto una penalizzazione aggiuntiva qualora il dorso del Cheetah superasse un determinato angolo, incrementando progressivamente il valore della penalità per scoraggiare tali comportamenti indesiderati.
