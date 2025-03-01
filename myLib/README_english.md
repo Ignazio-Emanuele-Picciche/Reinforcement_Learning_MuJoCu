@@ -1,51 +1,70 @@
 # Reinforcement_Learning_MuJoCu
 
 <p align="center">
-  <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/halfcheetah.gif" alt="HalfCheetah GIF">
+    <img src="Test Cheetah/media/halfcheetah.gif" alt="HalfCheetah GIF">
+    <img src="myLib/ANT_media/rendering_ant_ppo15.gif" alt="Ant GIF">
 </p>
 
-## Index
-1. [Project Description](#project-description)
-2. [Environment Setup](#environment-setup)
-3. [Repository Structure](#repository-structure)
-4. [Project Organization](#project-organization)
-5. [Graphs and Results](#graphs-and-results)
-6. [Challenges and Adopted Solutions](#challenges-and-adopted-solutions)
+<!-- To read the README.md in English, click [here](myLib/README_english.md). -->
 
-## Project Description
-This project explores the application of advanced Reinforcement Learning (RL) algorithms for training and evaluating autonomous agents in the classic HalfCheetah and Ant environments from the Gymnasium library. The primary goal is to optimize the agents' performance using two main approaches for HalfCheetah: Proximal Policy Optimization (PPO) and Soft Actor-Critic (SAC). For the Ant environment, Twin Delayed Deep Deterministic Policy Gradient (TD3) is also employed.
+## Indice 
+1. [Descrizione del progetto](#1-descrizione-del-progetto)
+2. [Setup del Enviroment](#2-setup-del-enviroment)
+3. [Struttura del repository](#3-struttura-del-repository)
+4. [Organizzazione Progetto](#4-organizzazione-progetto)
+    - [Struttura delle Cartelle](#41-struttura-delle-cartelle)
+    - [Modalità di Rendering](#42-modalità-di-rendering)
+    - [Vantaggi dell'Organizzazione](#43-vantaggi-dellorganizzazione)
 
-The implementation leverages Optuna for automated hyperparameter search and includes customized environments to tailor the learning dynamics to the agents' specific requirements. The project also incorporates normalization techniques to stabilize training and evaluation tools for detailed performance analysis across different simulated scenarios.
+5. [Grafici e Risultati](#5-grafici-e-risultati)
+    - [Confronto tra Policy Addestrata e Casuale](#51-confronto-tra-policy-addestrata-e-casuale)
+    - [Grafico della Reward Media nel Tempo](#52-grafico-della-reward-media-nel-tempo)
+    - [Grafici](#53-grafici)
 
-## Environment Setup
-Before running the code, ensure that you are using Python version 3.10.*. It is important to take some precautions and properly configure the environment. Follow these steps:
+6. [Problemi affrontati e soluzioni adottate](#6-problemi-affrontati-e-soluzioni-adottate)
+    - [Problemi e soluzioni con il modello Cheetah](#61-problemi-con-il-modello-cheetah)
+    - [Problemi e soluzioni con il modello Ant](#62-problemi-con-il-modello-ant)
 
-1. Create a Virtual Environment:
+## 1. Descrizione del progetto
+Questo progetto esplora l'applicazione di algoritmi avanzati di Reinforcement Learning (RL) per l'addestramento e la valutazione di agenti autonomi nei classici ambienti HalfCheetah e Ant della libreria Gymnasium. L'obiettivo principale è ottimizzare le prestazioni degli agenti utilizzando tre approcci principali:
 
-    - Open the terminal or command prompt.
-    - Run the following command to create a virtual environment named "venv": `python -m venv venv`
+- **Proximal Policy Optimization (PPO)**
+- **Soft Actor-Critic (SAC)**
+- **Twin Delayed Deep Deterministic Policy Gradient (TD3)**
 
-2. Activate the Virtual Environment:
+L'implementazione sfrutta Optuna per la ricerca automatizzata degli iperparametri, ottimizzando le configurazioni per massimizzare le prestazioni degli agenti. Inoltre, include ambienti personalizzati per adattare le dinamiche di apprendimento alle specifiche esigenze degli agenti, migliorando la robustezza e l'efficacia del training.
 
-    - If you are using Windows: `./venv/Scripts/activate`
-    - If you are using Unix or macOS: `source venv/bin/activate`
+Il progetto prevede tecniche di normalizzazione per stabilizzare il training, riducendo la varianza delle osservazioni e migliorando la convergenza degli algoritmi. Strumenti di valutazione dettagliati, come grafici della reward media e confronti tra policy addestrate e casuali, sono utilizzati per analizzare le prestazioni degli agenti nei vari scenari simulati. Questi strumenti permettono di identificare rapidamente le aree di miglioramento e di valutare l'efficacia delle diverse strategie di RL implementate.
 
-3. OPTIONAL - Deactivate the Virtual Environment (When Done):
+## 2. Setup del Enviroment
+Prima di eseguire il codice, assicurati di utilizzare la versione di Python 3.10.*. È importante prendere alcune precauzioni e configurare correttamente l'ambiente. Segui questi passaggi:
 
-    - Use the following command to deactivate the virtual environment: `deactivate`
+1. Creare un Ambiente Virtuale:
 
-4. Install Dependencies:
+    - Apri il terminale o il prompt dei comandi.
+    - Esegui il seguente comando per creare un ambiente virtuale chiamato "venv": `python -m venv venv`
 
-    - After cloning the project and activating the virtual environment, install the required dependencies using: `pip install -r requirements.txt`
-    
-    This command will download all the non-standard modules required by the application.
+2. Attivare l'Ambiente Virtuale:
 
-5. If the Python version used to create the virtual environment does not contain an updated version of pip, update pip using: `pip install --upgrade pip`
+    - Se stai usando Windows: `.\venv\Scripts\activate`
+    - Se stai usando Unix o macOS: `source venv/bin/activate`
 
-Once the virtual environment is set up and dependencies are installed, you are ready to run the application. Simply navigate to the desired `.ipynb` file and execute it.
+3. OPZIONALE - Disattivare l'Ambiente Virtuale (Quando hai finito):
 
-## Repository Structure
-The project is organized into the following directories and files:
+    - Usa il seguente comando per disattivare l'ambiente virtuale: `deactivate`
+
+4. Installare le Dipendenze:
+
+    - Dopo aver clonato il progetto e attivato l'ambiente virtuale, installa le dipendenze richieste utilizzando: `pip install -r requirements.txt`
+    - Questo comando scaricherà tutti i moduli non standard richiesti dall'applicazione.
+
+5. Se la versione di Python utilizzata per creare l'ambiente virtuale non contiene una versione aggiornata di pip, aggiorna pip utilizzando: `pip install --upgrade pip`
+
+Una volta configurato l'ambiente virtuale e installate le dipendenze, sei pronto per eseguire l'applicazione. Semplicemente, naviga fino al file .ipynb desiderato ed eseguilo.
+
+## 3. Struttura del repository
+Il repository è organizzato in modo da facilitare la navigazione e la gestione dei file e delle cartelle. La struttura principale del progetto è la seguente:
+
 ```plaintext
 REINFORCEMENT_LEARNING_MUJOCU/
 ├── Docs/                           # Documentazione e risultati  
@@ -98,74 +117,114 @@ REINFORCEMENT_LEARNING_MUJOCU/
 │   │   ├── sac_HalfCheetah_model.zip # Modello salvato  
 │   │   ├── vecnormalize_HalfCheetah.pkl # File per la normalizzazione  
 │
-├── videos/                           # Cartella con video delle migliori policy  
+├── media/                           # Cartella con video/foto delle migliori policy  
 │   ├── halfcheetah_best_policy.mp4   # Video della migliore policy  
 │   ├── halfcheetah.gif               # GIF della simulazione  
 │
 ├── venv/                             # Ambiente virtuale Python  
 │
 ├── .gitignore                        # File per ignorare file non necessari su Git  
-├── prova.ipynb                        # Notebook per il tuning dei parametri  
 ├── README.md                          # Questo file  
 ├── requirements.txt                   # File con le dipendenze del progetto  
 ```
 
-## Project Organization
-To assess how well the model has learned, the project includes a comparison between the trained policy and a random policy, along with a graph that shows the trend of the average reward during training.
+## 4. Organizzazione Progetto 
 
-1. Comparison Between Trained and Random Policy
-After training, the model is tested and compared with an agent that moves randomly (random policy). This helps evaluate how much the algorithm has improved behavior compared to an action without learning. Ideally, the trained policy should exhibit smoother and more efficient movements compared to the random policy.
+Il progetto è strutturato in modo da facilitare la gestione e l'analisi degli esperimenti di reinforcement learning su due ambienti di simulazione: Ant e HalfCheetah. Ogni ambiente ha una propria cartella dedicata, all'interno della quale i test sono ulteriormente suddivisi in base all'algoritmo di reinforcement learning utilizzato per l'addestramento del modello. Gli algoritmi principali utilizzati sono:
 
-2. Average Reward Graph Over Time
-During training, the average reward obtained by the model is recorded at time intervals. This graph helps understand how the model is improving over time:
+- PPO (Proximal Policy Optimization)
+- SAC (Soft Actor-Critic)
+- TD3 (Twin Delayed Deep Deterministic Policy Gradient)
 
-    - If the reward increases, it means the model is learning to move better.
-    - If the reward stabilizes or decreases, it could indicate a problem or that the model has reached its maximum learning potential.
+### 4.1 Struttura delle Cartelle
 
-These tools help evaluate the quality of training and compare the different algorithms used.
+Ogni cartella dedicata a un algoritmo contiene i seguenti notebook Jupyter, ciascuno con uno scopo specifico:
 
-The project is structured into folders dedicated to testing two simulation environments: Ant and HalfCheetah. Within each of these folders, tests are further divided based on the reinforcement learning algorithm used for model training, including PPO (Proximal Policy Optimization), SAC (Soft Actor-Critic), and TD3 (Twin Delayed Deep Deterministic Policy Gradient).
+1. **Hyperparameter Tuning**: Questo notebook è dedicato alla regolazione degli iperparametri. Ottimizzare gli iperparametri è cruciale per migliorare le prestazioni del modello prima della fase di addestramento effettivo. Utilizziamo strumenti come Optuna per automatizzare questo processo e trovare le migliori configurazioni possibili.
 
-Each algorithm-specific folder contains the following Jupyter notebooks:
+2. **Training**: Il notebook principale per l'addestramento del modello nell'ambiente corrispondente. In questo notebook, il modello viene addestrato utilizzando l'algoritmo specificato. Per l'ambiente HalfCheetah, il notebook include anche la visualizzazione di grafici riassuntivi delle metriche di addestramento, come la reward media nel tempo, per monitorare i progressi del modello.
 
-1. Hyperparameter Tuning: A dedicated notebook for tuning hyperparameters, essential for optimizing model performance before actual training.
+3. **Rendering**: Un notebook dedicato alla visualizzazione e alla valutazione del comportamento del modello dopo l'addestramento. Questo notebook permette di osservare come l'agente interagisce con l'ambiente e di valutare qualitativamente le sue prestazioni.
 
-2. Training: The main notebook for training the model in the respective environment, which in the case of HalfCheetah also includes the visualization of summary graphs of training metrics.
+### 4.2 Modalità di Rendering
 
-3. Rendering: A notebook for visualizing and evaluating the model's behavior after training.
+Nel caso specifico del notebook di rendering del modello PPO per l'ambiente HalfCheetah, sono disponibili due modalità di rendering:
 
-In the specific case of the PPO rendering notebook for the HalfCheetah environment, two rendering modes are available:
+1. **Human Mode**: Questa modalità consente di visualizzare in tempo reale l'interazione dell'agente con l'ambiente. È particolarmente utile per l'osservazione diretta da parte dell'utente, permettendo di vedere immediatamente come l'agente si comporta.
 
-1. Human Mode: This mode allows real-time visualization of the agent's interaction with the environment, making it suitable for direct user observation.
-2. RGB Array Mode: This mode returns rendering frames as arrays of RGB values, enabling further processing and video saving for later analysis or animation creation.
+2. **RGB Array Mode**: Questa modalità restituisce i frame del rendering sotto forma di array di valori RGB. Questo formato è utile per elaborare e salvare il video per analisi successive o per la creazione di animazioni. Può essere utilizzato per generare GIF o video che mostrano l'evoluzione del comportamento dell'agente nel tempo.
 
-This organization enables a clear and modular management of experiments, facilitating the analysis of the performance of different algorithms applied to simulation environments.
+### 4.3 Vantaggi dell'Organizzazione
 
-## Graphs and Results
-To assess how well the model has learned, the project includes a comparison between the trained policy and a random policy, along with a graph that shows the trend of the average reward during training.
+Questa organizzazione modulare consente una gestione chiara e strutturata degli esperimenti. Ogni fase del processo di reinforcement learning, dalla regolazione degli iperparametri all'addestramento e alla valutazione, è separata in notebook distinti. Questo approccio facilita l'analisi delle performance dei diversi algoritmi applicati agli ambienti di simulazione e permette di identificare rapidamente le aree di miglioramento.
 
-1. Comparison Between Trained and Random Policy
-After training, the model is tested and compared with an agent that moves randomly (random policy). This helps evaluate how much the algorithm has improved behavior compared to an action without learning. Ideally, the trained policy should exhibit smoother and more efficient movements compared to the random policy.
+Inoltre, la suddivisione in cartelle e notebook specifici rende il progetto facilmente navigabile e comprensibile, anche per chi non ha familiarità con il codice. Ogni notebook è documentato e contiene spiegazioni dettagliate dei passaggi eseguiti, rendendo il progetto accessibile e utile per scopi educativi e di ricerca.
 
-2. Average Reward Graph Over Time
-During training, the average reward obtained by the model is recorded at time intervals. This graph helps understand how the model is improving over time:
+## 5. Grafici e Risultati
+Per valutare l'efficacia dell'addestramento del modello, il progetto include un confronto tra la policy addestrata e una policy casuale, oltre a grafici che mostrano l'andamento della reward media durante l'addestramento.
 
-    - If the reward increases, it means the model is learning to move better.
-    - If the reward stabilizes or decreases, it could indicate a problem or that the model has reached its maximum learning potential.
+### 5.1 Confronto tra Policy Addestrata e Casuale
+Dopo l'addestramento, il modello viene testato e confrontato con un agente che si muove in modo casuale (random policy). Questo confronto serve a evidenziare quanto l'algoritmo abbia migliorato il comportamento rispetto a un'azione priva di apprendimento. Idealmente, la policy addestrata dovrebbe mostrare movimenti più fluidi ed efficienti rispetto alla policy casuale, dimostrando l'efficacia dell'algoritmo di reinforcement learning.
 
-These tools help evaluate the quality of training and compare the different algorithms used.
+### 5.2 Grafico della Reward Media nel Tempo
+Durante l'addestramento, viene registrata la reward media ottenuta dal modello a intervalli di tempo. Questo grafico è fondamentale per monitorare i progressi del modello e identificare eventuali problemi:
 
-Example graphs from PPO HalfCheetah:
+- **Incremento della Reward**: Se la reward media aumenta nel tempo, significa che il modello sta imparando a muoversi meglio e a ottimizzare le sue azioni.
+- **Stabilizzazione o Decremento della Reward**: Se la reward media si stabilizza o diminuisce, potrebbe indicare che il modello ha raggiunto il suo massimo livello di apprendimento o che ci sono problemi nell'addestramento che necessitano di essere risolti.
+
+### 5.2 Grafici
+Di seguito sono riportati uno dei migliori risultati ottenuti durante l'addestramento con l'algoritmo PPO per l'ambiente HalfCheetah:
+
+- **Grafico della Reward Media**: Mostra l'andamento della reward media nel tempo, evidenziando i progressi del modello durante l'addestramento.
+- **Valutazione della Policy**: Confronta la performance della policy addestrata con quella di una policy casuale, dimostrando l'efficacia dell'algoritmo.
 
 <p align="center">
-    <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Reward.png" width="45%">
-    <img src="https://github.com/Ignazio-Emanuele-Picciche/Reinforcement_Learning_Ant_MuJoCu/blob/main/Test%20Cheetah/videos/Valutazione_policy.png" width="45%">
+    <img src="Test Cheetah/media/Reward.png" width="45%">
+    <img src="Test Cheetah/media/Valutazione_policy.png" width="45%">
 </p>
 
-## Challenges and Adopted Solutions
-At the beginning of the development, we used a predefined basic environment for the libraries, but we found that it was not suitable for either the Cheetah or Ant models. Specifically, for Cheetah, the algorithm often tended to converge towards suboptimal solutions rather than finding the global optimum. To improve performance, we introduced an additional penalty whenever the Cheetah's torso exceeded a certain angle, progressively increasing the penalty value to discourage such undesirable behaviors.
 
-A further improvement was achieved by modifying the neural network architecture through the parameter "policy_kwargs": dict(net_arch=[256, 256, 128]), which led to more satisfactory results in the case of Cheetah.
+Di seguito ri riporta uno dei migliori risultati ottenuti durante l'addestramento con l'algoritmo PPO per l'ambiente Ant:
 
-Regarding Ant, we explored various strategies to improve performance, adapting and testing different algorithms with the goal of optimizing model control. In particular, we refined the neural network architecture and adjusted key parameters to handle the greater computational complexity of the environment. Despite the intrinsic difficulties of the task, we managed to identify and implement the best solutions among those tested, thus significantly advancing training and achieving concrete results, although there is still room for improvement to reach a definitive optimal solution.
+<p align="left">
+    <img src="myLib/ANT_media/best_eval_ANT_PPO.png" width="70%">
+    <img src="myLib/ANT_media/best_train_ANT_PPO.png" width="70%">
+</p>
 
+Questi strumenti di valutazione sono essenziali per comprendere la qualità dell'addestramento e per confrontare le performance dei diversi algoritmi utilizzati nel progetto.
+
+
+## 6. Problemi affrontati e soluzioni adottate
+
+Durante le prime fasi dello sviluppo, abbiamo utilizzato un ambiente di base predefinito per le librerie. Tuttavia, ci siamo presto resi conto che questo ambiente non era adeguato né per il modello Cheetah né per il modello Ant. 
+
+### 6.1 Problemi con il modello Cheetah
+
+Per il modello Cheetah, l'algoritmo tendeva spesso a convergere verso soluzioni subottimali anziché trovare l'ottimo globale. Questo comportamento era dovuto a una mancanza di penalizzazioni adeguate per certi movimenti indesiderati. Per migliorare le prestazioni, abbiamo introdotto una penalizzazione aggiuntiva qualora il dorso del Cheetah superasse un determinato angolo. Incrementando progressivamente il valore della penalità, siamo riusciti a scoraggiare tali comportamenti indesiderati, portando l'algoritmo a convergere verso soluzioni più ottimali.
+
+#### Penalizzazione Personalizzata
+
+Abbiamo implementato un wrapper personalizzato per l'ambiente `HalfCheetah-v5` che modifica la funzione di ricompensa. Questo wrapper penalizza il robot se il torso si inclina troppo all'indietro (indicando una caduta), aumentando la penalità nel tempo finché rimane in questa posizione.
+
+- **CustomRewardWrapper**: Questo wrapper modifica la ricompensa dell'ambiente penalizzando il robot se il torso si inclina oltre una certa soglia. La penalità aumenta in base al tempo trascorso in questa condizione, scoraggiando comportamenti indesiderati.
+
+#### Creazione dell'Ambiente
+
+Per creare l'ambiente con la ricompensa personalizzata, abbiamo utilizzato una funzione che configura l'ambiente `HalfCheetah-v5` con parametri ottimizzati e applica il `CustomRewardWrapper`.
+
+- **make_env**: Questa funzione crea e restituisce un'istanza dell'ambiente `HalfCheetah-v5` con parametri personalizzati, monitoraggio delle prestazioni e applicazione del `CustomRewardWrapper`.
+
+#### Modifica dell'Architettura della Rete Neurale
+
+Inoltre, abbiamo ottenuto un ulteriore miglioramento modificando l'architettura della rete neurale. Utilizzando il parametro `policy_kwargs`: `dict(net_arch=[256, 256, 128])`, siamo riusciti a ottenere risultati più soddisfacenti per il modello Cheetah. Questa modifica ha permesso di affinare la capacità della rete neurale di apprendere comportamenti più complessi e appropriati per il task.
+
+- **policy_kwargs**: Abbiamo configurato l'architettura della rete neurale con tre strati di dimensioni 256, 256 e 128 neuroni rispettivamente, migliorando la capacità di apprendimento del modello.
+
+In sintesi, attraverso l'introduzione di penalizzazioni mirate e la modifica dell'architettura delle reti neurali, siamo riusciti a migliorare significativamente le prestazioni del modello Cheetah.
+
+### 6.2 Problemi con il modello Ant
+Per quanto riguarda il modello Ant, abbiamo esplorato diverse strategie per migliorare le prestazioni. L'ambiente di Ant presenta una maggiore complessità computazionale, richiedendo un'ottimizzazione più accurata dei parametri e dell'architettura della rete neurale. Abbiamo testato vari algoritmi e adattato le strategie di controllo per ottimizzare il comportamento del modello.
+
+In particolare, abbiamo affinato l'architettura della rete neurale e regolato i parametri chiave per gestire la complessità dell'ambiente. Nonostante le difficoltà intrinseche del task, siamo riusciti a individuare e implementare le soluzioni migliori tra quelle testate. Questo ci ha permesso di avanzare significativamente nell'addestramento del modello Ant, ottenendo risultati concreti. Tuttavia, riconosciamo che c'è ancora margine di miglioramento per arrivare a una soluzione ottimale definitiva.
+
+In sintesi, attraverso l'introduzione di penalizzazioni mirate e la modifica dell'architettura delle reti neurali, siamo riusciti a migliorare significativamente le prestazioni dei modelli Cheetah e Ant, sebbene il processo di ottimizzazione continui ad essere un lavoro in corso.
